@@ -29,11 +29,13 @@ Array.prototype.transpose = function () {
     let transposed = [];
 
     for ( let i = 0; i < this.length; i++) {
-        let pair = []
+        let pair = [];
+        
         for ( let j = 0; j < this.length; j++) {
             pair.push(this[j][i]);
         }
-        transposed.push(pair)
+
+        transposed.push(pair);
     }
 
     return transposed;

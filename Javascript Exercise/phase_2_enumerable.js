@@ -18,18 +18,21 @@ Array.prototype.myMap = function (cb) {
 // console.log(main2.myMap(Math.sqrt));
 
 
-Array.prototype.myReduce = function (cb[, initialvalue]) {
+Array.prototype.myReduce = function (cb, initialvalue) {
     // like Ruby's Array#inject, optional initial value
+    if (initialvalue === undefined) {
+        var initialvalue = this[0]; 
+    }
+
+    let result = initialvalue;
+    this.myEach(num => result = cb(result, num));
+    return result;
 
 }
 
-
-// without initialValue
 [1, 2, 3].myReduce(function (acc, el) {
     return acc + el;
-}); // => 6
-
-// with initialValue
+});
 [1, 2, 3].myReduce(function (acc, el) {
     return acc + el;
-}, 25); // => 31
+}, 25);
